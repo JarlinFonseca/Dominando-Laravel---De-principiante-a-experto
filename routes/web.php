@@ -36,7 +36,8 @@ Route::get('saludo/{nombre?}', function($nombre = "Invitado"){
 });
  */
 
- Route::get('contactame', function(){
+
+/*  Route::get('contactame', function(){
     return  "Seccción de contactos";
 })->name('contactos');
 
@@ -48,4 +49,29 @@ Route::get('/', function(){
     echo "<a href ='" . route('contactos') . "'>Contactos 4 </a><br>";
     echo "<a href ='" . route('contactos') . "'>Contactos 5 </a><br>";
 }); 
+ */
 
+
+Route::get('/', function() {
+   $nombre = "Jarlin";
+
+ /*    return view('home')->with('nombre', $nombre); */
+    /* return view('home', ['nombre' => $nombre]) */
+   return view('home', compact('nombre')); // ['nombre' => $nombre]
+})->name('home');
+
+
+ $portfolio = [
+    ['title' => 'Proyecto #1'],
+    ['title' => 'Proyecto #2'],
+    ['title' => 'Proyecto #3'],
+    ['title' => 'Proyecto #4'],
+]; 
+
+
+
+/* Route::view('/', 'home',['nombre' => 'Jarlin'] ); // Ejemplo polticias de privacidad, termnos y condicioens, paginas que no tienen mucha logica */
+Route::view('/', 'home')->name('home');
+Route::view('/about', 'about')->name('about');
+Route::view('/portfolio', 'portfolio', compact('portfolio'))->name('portfolio');
+Route::view('/contact', 'contact')->name('contact'); 
