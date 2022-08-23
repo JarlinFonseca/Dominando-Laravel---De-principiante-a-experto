@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\MessagesControlller;
 use App\Http\Controllers\PortfolioController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -72,5 +74,7 @@ Route::get('/', function() {
 Route::view('/about', 'about')->name('about');
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
 Route::view('/contact', 'contact')->name('contact');  
+
+Route::post('contact', [MessagesControlller::class, 'store'])->name('messages.store');
 
 //Route::resource('proyectos', PortfolioController::class);
