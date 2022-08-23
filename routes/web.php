@@ -68,9 +68,9 @@ Route::get('/', function() {
 
 
 /* Route::view('/', 'home',['nombre' => 'Jarlin'] ); // Ejemplo polticias de privacidad, termnos y condicioens, paginas que no tienen mucha logica */
-Route::view('/', 'home')->name('home');
+ Route::view('/', 'home')->name('home');
 Route::view('/about', 'about')->name('about');
-Route::get('/portfolio', PortfolioController::class)->name('portfolio');
+Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
+Route::view('/contact', 'contact')->name('contact');  
 
-
-Route::view('/contact', 'contact')->name('contact'); 
+//Route::resource('proyectos', PortfolioController::class);
