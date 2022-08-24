@@ -19,7 +19,7 @@ class MessagesControlller extends Controller
     } */
 
     /* SEGUNDA FORMA  */
-    public function store(){
+ /*    public function store(){
         return 'Los datos del formulario son: '.
         '<ul>'
         .'<li>'. request('text') .'</li>'
@@ -27,6 +27,22 @@ class MessagesControlller extends Controller
         .'<li>'. request('email') .'</li>'
         .'<li>'. request('content') .'</li>'.
         '</ul>';
+    } */
+
+    public function store(){
+
+       // return request();
+
+        request()->validate(
+            [
+                'name' => 'required',
+                'email' =>'required|email', /* ['required', 'email'] */
+                'subject' => 'required',
+                'content' => 'required|min:12'
+            ]);
+
+            return 'Datos validados'; 
+
     }
 
 }
