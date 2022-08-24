@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail\MessageReceived;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Mail;
+
+
 
 class MessagesControlller extends Controller
 {
@@ -33,7 +38,7 @@ class MessagesControlller extends Controller
 
        // return request();
 
-        request()->validate(
+        $msg= request()->validate(
             [
                 'name' => 'required',
                 'email' =>'required|email', /* ['required', 'email'] */
@@ -44,7 +49,10 @@ class MessagesControlller extends Controller
                 'name.required' => __('I need your name')
             ]);
 
-            return 'Datos validados'; 
+            Mail::to($msg['email'])->queue(new MessageReceived($msg));
+            //Mail::to('jarlinandres5000@gmail.com')->queue(new MessageReceived($msg));
+
+            return 'Mensaje enviado'; 
 
     }
 
