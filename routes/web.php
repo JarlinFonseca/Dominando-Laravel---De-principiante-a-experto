@@ -56,6 +56,8 @@ Route::get('/', function(){
  */
 
 
+App::setLocale('es');
+
 Route::get('/', function() {
    $nombre = "Jarlin";
 

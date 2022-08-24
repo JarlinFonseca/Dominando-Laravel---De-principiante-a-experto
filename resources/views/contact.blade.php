@@ -5,7 +5,7 @@
 
 @section('content')
 
-<h1>CONTACT</h1>
+<h1>{{ __('Contact') }}</h1>
 
 {{-- @if($errors->any())
 
@@ -47,7 +47,7 @@
           {!! $errors->first('content', '<small style="color:red;">:message</small><br>') !!}
         </P>
         
-        <button>Enviar</button>
+        <button>@lang('Send')</button>
 </form>
 
 @endsection
