@@ -19,11 +19,15 @@
      
             
              {{-- De esta forma se haria con BLADE -Laravel  --}}
-        @forelse($portfolio as $portfolioItem)
-                 <li> {{ $portfolioItem['title'] }} <small> {{ $loop->last ? 'Es el último': '' }}</small> </li>
+        @forelse($projects as $project)
+                 <li> {{ $project->title }} <br><small>{{ $project->description }} 
+                    <br>{{ $project->created_at->format('Y-m-d') }} 
+                    <br>{{ $project->created_at->diffForHumans() }}
+                </small> {{-- <small> {{ $loop->last ? 'Es el último': '' }}</small>  --}}</li>
         @empty
             <li>No hay proyectos para mostrar</li>
         @endforelse
+        {{ $projects->links() }}
       
     </ul>
    

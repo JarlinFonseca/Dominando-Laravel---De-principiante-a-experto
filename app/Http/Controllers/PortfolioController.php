@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
+//use DB;
 
 class PortfolioController extends Controller
 {
@@ -13,14 +15,18 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $portfolio = [
-            ['title' => 'Proyecto #1'],
-            ['title' => 'Proyecto #2'],
-            ['title' => 'Proyecto #3'],
-            ['title' => 'Proyecto #4'],
-        ]; 
+        //Forma sin Eloquent
+       // $portfolio = DB::table('projects')->get();
+
+      // $portfolio = Project::orderBy('created_at', 'DESC')->get();
+      //$projects = Project::latest()->paginate();
+            
         
-        return view('portfolio',  compact('portfolio'));
+        //return view('portfolio',  compact('portfolio'));
+
+        return view('portfolio', [
+            'projects' => Project::latest()->paginate()
+        ]);
     }
 
     
