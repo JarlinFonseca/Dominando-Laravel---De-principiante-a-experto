@@ -28,11 +28,13 @@ class ProjectController extends Controller
             'projects' => Project::latest()->paginate()
         ]);
     }
-
-    public function show($id){
+//Route model binding: Project $id
+//Ahora el $id es un objeto Project
+    public function show(Project $project){
         //$project = Project::find($id);
         return view('projects.show', [
-            'project' => Project::findOrFail($id)
+           // 'project' => Project::findOrFail($id)
+           'project' =>  $project
         ]);
     }
 
