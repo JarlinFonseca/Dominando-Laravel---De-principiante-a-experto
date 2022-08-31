@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Mail;
 
 
 
-class MessagesControlller extends Controller
+class MessageControlller extends Controller
 {
 
     /* PRIMERA FORMA */

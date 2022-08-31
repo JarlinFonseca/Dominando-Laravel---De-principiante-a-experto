@@ -25,7 +25,7 @@
 
 
 
-<form action="{{ route('contact') }}" method="POST">
+<form action="{{ route('messages.store') }}" method="POST">
         @csrf
         
         <label for="name">Digite su nombre:</label>

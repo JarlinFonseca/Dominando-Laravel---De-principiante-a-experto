@@ -5,6 +5,6 @@
 
 @section('content')
 
-<h1>ABOUT</h1>
+<h1>{{ __('About') }}</h1>
 
 @endsection
