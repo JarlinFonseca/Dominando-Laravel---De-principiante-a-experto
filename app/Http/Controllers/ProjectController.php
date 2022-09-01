@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
-use App\Http\Requests\CreateProjectRequest;
+use App\Http\Requests\SaveProjectRequest;
 //use DB;
 
 class ProjectController extends Controller
@@ -43,7 +43,7 @@ class ProjectController extends Controller
         return view('projects.create');
     }
 
-    public function store(CreateProjectRequest $request){
+    public function store(SaveProjectRequest $request){
 
         //Primera forma
         /*
@@ -76,5 +76,26 @@ class ProjectController extends Controller
        Project::create($request->validate());
 
         return redirect()->route('projects.index');
+    }
+
+    public function edit(Project $project){
+
+        return view('projects.edit', [
+            'project' =>  $project
+         ]);
+
+    }
+
+    public function update(Project $project, SaveProjectRequest $request){
+        //Primera forma sin request pero no valida los campos
+       /*  $project->update( [
+                'title' => request('title'),
+                'url' => request('url'),
+                'description' => request('description')
+
+            ]); */
+            $project->update($request->validate());
+
+            return redirect()->route('projects.show', $project);
     }
 }
