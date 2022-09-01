@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateProjectRequest;
 //use DB;
 
 class ProjectController extends Controller
@@ -42,7 +43,7 @@ class ProjectController extends Controller
         return view('projects.create');
     }
 
-    public function store(){
+    public function store(CreateProjectRequest $request){
 
         //Primera forma
         /*
@@ -64,13 +65,15 @@ class ProjectController extends Controller
        //Project::create(request()->only('title', 'url', 'description'));
 
        //Cuarta fornma
-       $fields = request()->validate([
+    /*    $fields = request()->validate([
             'title' => 'required',
             'url' => 'required',
             'description' => 'required'
        ]);
 
-       Project::create($fields);
+       Project::create($fields); */
+
+       Project::create($request->validate());
 
         return redirect()->route('projects.index');
     }
