@@ -6,6 +6,11 @@
 
 <h1>{{ __('Home') }}</h1>
 
+@auth
+{{ auth()->user()->name }}
+@endauth
+
+
 {{-- <h1>ESTE ES EL HOME</h1>
 
     Bienvenid@ <?php echo $nombre ?? "Invitado"?> 
