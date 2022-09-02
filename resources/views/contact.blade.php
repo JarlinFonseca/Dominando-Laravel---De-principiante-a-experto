@@ -24,8 +24,7 @@
 {{-- {{ var_dump($errors->any()) }} --}}
 
 
-
-<form action="{{ route('messages.store') }}" method="POST">
+    <form action="{{ route('messages.store') }}" method="POST">
         @csrf
         
         <label for="name">Digite su nombre:</label>
@@ -35,7 +34,7 @@
         </p>
         <label for="email">Digite correo al cúal enviara la información:</label>
         <P>
-           
+        
             <input type="text" name="email" placeholder="Email..." value="{{ old('email') }}"><br>
             {!! $errors->first('email', '<small style="color:red;">:message</small><br>') !!}
         </P>
@@ -46,11 +45,10 @@
         </P>
         <label for="name">Digite su mensaje:</label>
         <P>
-          <textarea name="content" placeholder="Mensaje....">{{old('content')}}</textarea><br>
-          {!! $errors->first('content', '<small style="color:red;">:message</small><br>') !!}
+        <textarea name="content" placeholder="Mensaje....">{{old('content')}}</textarea><br>
+        {!! $errors->first('content', '<small style="color:red;">:message</small><br>') !!}
         </P>
         
         <button>@lang('Send')</button>
-</form>
-
+    </form>
 @endsection
