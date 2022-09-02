@@ -79,7 +79,10 @@ Route::view('/', 'home')->name('home');
 Route::view('/quienes-somos', 'about')->name('about');
 
 
-Route::resource('portafolio', ProjectController::class)->names('projects')->parameters(['portafolio' => 'project']);
+Route::resource('portafolio', ProjectController::class)
+    ->names('projects')
+    ->parameters(['portafolio' => 'project']);
+    //->middleware('auth');
 
 /* Route::get('/portafolio', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/portafolio/crear', [ProjectController::class, 'create'])->name('projects.create');
