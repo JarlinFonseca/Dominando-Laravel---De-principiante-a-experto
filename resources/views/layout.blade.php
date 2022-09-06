@@ -8,7 +8,7 @@
      <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}"> 
-    <script src="{{ mix('js/app.js') }}"   defer></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
             @include('partials.session-status')
         </header>
 
-        <main>
+        <main class="py-4">
             @yield('content')
         </main>
 

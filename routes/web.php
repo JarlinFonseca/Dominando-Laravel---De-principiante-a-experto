@@ -98,6 +98,8 @@ Route::post('contacto', [MessageControlller::class, 'store'])->name('messages.st
 
 //Route::resource('proyectos', PortfolioController::class);
 
-Auth::routes(['register' => false]);
+//Auth::routes(['register' => false]);
+
+Auth::routes();
 
 
